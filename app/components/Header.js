@@ -31,16 +31,28 @@ export default function Header({ items = [] }) {
     <>
       <div className="reading-progress" id="readingProgress"></div>
 
+      {/* Mobile overlay */}
       <div className={`nav-mobile-overlay${mobileOpen ? ' open' : ''}`} id="mobileOverlay">
         {items.map(item => (
-          <a
-            key={item.label}
-            href={bp(item.url)}
-            onClick={closeMobile}
-            style={item.highlight ? { color: 'var(--gold)' } : undefined}
-          >
-            {item.label}
-          </a>
+          <div key={item.label} className="nav-mobile-item">
+            <a
+              href={item.url ? bp(item.url) : undefined}
+              onClick={!item.children?.length ? closeMobile : undefined}
+              style={item.highlight ? { color: 'var(--gold)' } : undefined}
+            >
+              {item.label}
+            </a>
+            {item.children?.map(child => (
+              <a
+                key={child.label}
+                href={bp(child.url)}
+                onClick={closeMobile}
+                className="nav-mobile-child"
+              >
+                {child.label}
+              </a>
+            ))}
+          </div>
         ))}
       </div>
 
@@ -53,16 +65,29 @@ export default function Header({ items = [] }) {
           </div>
         </a>
         <ul className="nav-links">
-          {items.map(item => (
-            <li key={item.label}>
-              <a
-                href={bp(item.url)}
-                className={item.highlight ? 'nav-cta' : undefined}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
+          {items.map(item => {
+            const hasChildren = item.children?.length > 0
+            return (
+              <li key={item.label} className={hasChildren ? 'has-dropdown' : undefined}>
+                <a
+                  href={item.url ? bp(item.url) : undefined}
+                  className={item.highlight ? 'nav-cta' : undefined}
+                >
+                  {item.label}
+                  {hasChildren && <span className="nav-arrow">&#9662;</span>}
+                </a>
+                {hasChildren && (
+                  <ul className="nav-dropdown">
+                    {item.children.map(child => (
+                      <li key={child.label}>
+                        <a href={bp(child.url)}>{child.label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            )
+          })}
         </ul>
         <div className="nav-hamburger" id="hamburger" onClick={toggleMobile}>
           <span></span><span></span><span></span>

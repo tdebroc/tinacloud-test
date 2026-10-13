@@ -128,6 +128,51 @@ nav.scrolled {
 .nav-cta::after { display: none !important; }
 .nav-cta:hover { background: var(--gold-light) !important; }
 
+/* ─── DROPDOWN ─── */
+.nav-links li.has-dropdown { position: relative; }
+
+.nav-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--navy-deep);
+  border-top: 2px solid var(--gold);
+  min-width: 200px;
+  list-style: none;
+  padding: 0.5rem 0;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+  z-index: 200;
+  border-radius: 0 0 4px 4px;
+}
+
+.nav-links li.has-dropdown:hover .nav-dropdown { display: block; }
+
+.nav-dropdown li a {
+  display: block;
+  padding: 0.65rem 1.4rem;
+  color: var(--white);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: 'Cinzel', serif;
+  text-decoration: none;
+  transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+.nav-dropdown li a::after { display: none !important; }
+.nav-dropdown li a:hover { color: var(--gold); background: rgba(255,255,255,0.05); }
+
+.nav-arrow {
+  font-size: 0.55rem;
+  margin-left: 5px;
+  vertical-align: middle;
+  opacity: 0.7;
+  transition: transform 0.2s;
+}
+.has-dropdown:hover .nav-arrow { transform: rotate(180deg); }
+
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -152,10 +197,19 @@ nav.scrolled {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2.5rem;
+  gap: 1.8rem;
+  overflow-y: auto;
+  padding: 4rem 2rem;
 }
 
 .nav-mobile-overlay.open { display: flex; }
+
+.nav-mobile-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
 
 .nav-mobile-overlay a {
   font-family: 'Cinzel', serif;
@@ -167,6 +221,20 @@ nav.scrolled {
 }
 
 .nav-mobile-overlay a:hover { color: var(--gold); }
+
+.nav-mobile-child {
+  font-size: 0.8rem !important;
+  opacity: 0.7;
+  letter-spacing: 0.12em !important;
+  padding-left: 1rem;
+  position: relative;
+}
+.nav-mobile-child::before {
+  content: '–';
+  margin-right: 0.4rem;
+  color: var(--gold);
+  opacity: 0.6;
+}
 
 /* ─── HERO ─── */
 #hero {

@@ -53,8 +53,21 @@ export default defineConfig({
             },
             fields: [
               { type: 'string', name: 'label', label: 'Label', required: true },
-              { type: 'string', name: 'url', label: 'URL', required: true },
+              { type: 'string', name: 'url', label: 'URL' },
               { type: 'boolean', name: 'highlight', label: 'Highlighted (bouton doré)' },
+              {
+                type: 'object',
+                name: 'children',
+                label: 'Sous-menu',
+                list: true,
+                ui: {
+                  itemProps: (item) => ({ label: item.label }),
+                },
+                fields: [
+                  { type: 'string', name: 'label', label: 'Label', required: true },
+                  { type: 'string', name: 'url', label: 'URL', required: true },
+                ],
+              },
             ],
           },
         ],
