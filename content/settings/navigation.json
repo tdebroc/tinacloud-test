@@ -1,0 +1,10 @@
+{
+  "items": [
+    { "label": "La Paroisse", "url": "/#about", "highlight": false },
+    { "label": "Agenda", "url": "/#events", "highlight": false },
+    { "label": "Vie Paroissiale", "url": "/#parish-life", "highlight": false },
+    { "label": "Sacrements", "url": "/#sacraments", "highlight": false },
+    { "label": "Contact", "url": "/#contact", "highlight": false },
+    { "label": "Horaires", "url": "/#mass-times", "highlight": true }
+  ]
+}

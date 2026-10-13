@@ -1,8 +1,6 @@
 'use client'
 
 import { useEffect } from 'react'
-import Header from './components/Header'
-import Footer from './components/Footer'
 
 const bp = (path) => `${process.env.NEXT_PUBLIC_BASE_PATH || ''}${path}`
 
@@ -44,7 +42,6 @@ export default function Home() {
 
   return (
     <>
-      <Header />
 
       {/* ═══ HERO ═══ */}
       <section id="hero">
@@ -442,7 +439,6 @@ export default function Home() {
         </div>
       </section>
 
-      <Footer />
     </>
   )
 }

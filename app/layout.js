@@ -1,4 +1,8 @@
+import fs from 'fs'
+import path from 'path'
 import './globals.css'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 export const metadata = {
   title: 'Saint-Jean-Baptiste de Grenelle — Paris 15e',
@@ -6,7 +10,21 @@ export const metadata = {
     'Paroisse Saint-Jean-Baptiste de Grenelle — Paris 15e. Venez célébrer, prier et servir ensemble dans notre communauté catholique.',
 }
 
+function getNavItems() {
+  try {
+    const raw = fs.readFileSync(
+      path.join(process.cwd(), 'content/settings/navigation.json'),
+      'utf8'
+    )
+    return JSON.parse(raw).items || []
+  } catch {
+    return []
+  }
+}
+
 export default function RootLayout({ children }) {
+  const items = getNavItems()
+
   return (
     <html lang="fr">
       <head>
@@ -22,7 +40,11 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <Header items={items} />
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }

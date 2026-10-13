@@ -1286,7 +1286,7 @@ footer {
 }
 
 .blog-post-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2rem, 5vw, 3rem);
   color: var(--navy);
   margin-bottom: 2rem;
@@ -1311,7 +1311,7 @@ footer {
 .blog-post-body h1,
 .blog-post-body h2,
 .blog-post-body h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', serif;
   color: var(--navy);
   margin: 2rem 0 0.75rem;
 }

@@ -34,6 +34,33 @@ export default defineConfig({
   schema: {
     collections: [
       {
+        name: 'navigation',
+        label: 'Navigation',
+        path: 'content/settings',
+        format: 'json',
+        ui: {
+          allowedActions: { create: false, delete: false },
+          global: true,
+        },
+        match: { include: 'navigation' },
+        fields: [
+          {
+            type: 'object',
+            name: 'items',
+            label: 'Menu items',
+            list: true,
+            ui: {
+              itemProps: (item) => ({ label: item.label }),
+            },
+            fields: [
+              { type: 'string', name: 'label', label: 'Label', required: true },
+              { type: 'string', name: 'url', label: 'URL', required: true },
+              { type: 'boolean', name: 'highlight', label: 'Highlighted (bouton doré)' },
+            ],
+          },
+        ],
+      },
+      {
         name: 'post',
         label: 'Posts',
         path: 'content/posts',
