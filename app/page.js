@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react'
 
+const bp = (path) => `${process.env.NEXT_PUBLIC_BASE_PATH || ''}${path}`
+
 export default function Home() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -75,7 +77,7 @@ export default function Home() {
 
       <nav id="nav">
         <a href="#" className="nav-logo">
-          <img src="/Logo+SGJBG-1920w.webp" alt="Saint-Jean-Baptiste de Grenelle" />
+          <img src={bp('/Logo+SGJBG-1920w.webp')} alt="Saint-Jean-Baptiste de Grenelle" />
           <div className="nav-logo-text">
             <span className="name">SJBG</span>
             <span className="loc">Paris XV<sup>e</sup></span>
@@ -97,7 +99,7 @@ export default function Home() {
       {/* ═══ HERO ═══ */}
       <section id="hero">
         <div className="hero-bg"></div>
-        <div className="hero-photo"></div>
+        <div className="hero-photo" style={{backgroundImage: `url('${bp('/images/hero-church.jpg')}')`}}></div>
         <div className="hero-texture"></div>
         <div className="hero-bg-cross"></div>
         <div className="particles" id="particles"></div>
@@ -171,7 +173,7 @@ export default function Home() {
         <div className="about-grid">
           <div className="about-visual reveal-l">
             <div className="about-img-wrap">
-              <img src="/images/parish-1.jpg" alt="Église Saint-Jean-Baptiste de Grenelle" className="about-photo" />
+              <img src={bp('/images/parish-1.jpg')} alt="Église Saint-Jean-Baptiste de Grenelle" className="about-photo" />
               <div className="about-img-overlay"></div>
             </div>
             <div className="stat-card">
@@ -270,7 +272,7 @@ export default function Home() {
           </div>
           <div className="events-grid">
             <div className="ev-card featured reveal d1">
-              <div className="ev-card-bg" style={{ backgroundImage: "url('/images/community.jpg')" }}></div>
+              <div className="ev-card-bg" style={{ backgroundImage: `url('${bp('/images/community.jpg')}')` }}></div>
               <div className="ev-date">
                 <span className="ev-date-n">9</span>
                 <span className="ev-date-m">Oct</span>
@@ -288,7 +290,7 @@ export default function Home() {
               <a href="https://www.sjbg.org" className="ev-link">En savoir plus →</a>
             </div>
             <div className="ev-card reveal d2">
-              <div className="ev-card-bg" style={{ backgroundImage: "url('/images/pelerinage.jpg')" }}></div>
+              <div className="ev-card-bg" style={{ backgroundImage: `url('${bp('/images/pelerinage.jpg')}')` }}></div>
               <div className="ev-date">
                 <span className="ev-date-n">13</span>
                 <span className="ev-date-m">Oct</span>
@@ -300,7 +302,7 @@ export default function Home() {
               <a href="https://www.sjbg.org" className="ev-link">S'inscrire →</a>
             </div>
             <div className="ev-card reveal d3">
-              <div className="ev-card-bg" style={{ backgroundImage: "url('/images/rosary.jpg')" }}></div>
+              <div className="ev-card-bg" style={{ backgroundImage: `url('${bp('/images/rosary.jpg')}')` }}></div>
               <div className="ev-date">
                 <span className="ev-date-n" style={{ fontSize: '1.3rem', padding: '0.2rem 0' }}>Mens.</span>
                 <span className="ev-date-m">Récurrent</span>
@@ -312,7 +314,7 @@ export default function Home() {
               <a href="https://www.sjbg.org" className="ev-link">En savoir plus →</a>
             </div>
             <div className="ev-card reveal d4">
-              <div className="ev-card-bg" style={{ backgroundImage: "url('/images/conference.jpg')" }}></div>
+              <div className="ev-card-bg" style={{ backgroundImage: `url('${bp('/images/conference.jpg')}')` }}></div>
               <div className="ev-date">
                 <span className="ev-date-n" style={{ fontSize: '1.2rem', padding: '0.1rem 0' }}>Oct</span>
                 <span className="ev-date-m">2025</span>
@@ -324,7 +326,7 @@ export default function Home() {
               <a href="https://www.sjbg.org" className="ev-link">S'inscrire →</a>
             </div>
             <div className="ev-card reveal d5">
-              <div className="ev-card-bg" style={{ backgroundImage: "url('/images/capture.jpg')" }}></div>
+              <div className="ev-card-bg" style={{ backgroundImage: `url('${bp('/images/capture.jpg')}')` }}></div>
               <div className="ev-date">
                 <span className="ev-date-n" style={{ fontSize: '1.2rem', padding: '0.1rem 0' }}>Nov</span>
                 <span className="ev-date-m">2025</span>
@@ -366,7 +368,7 @@ export default function Home() {
             ].map((item, i) => (
               <div key={item.img} className={`life-card reveal d${i + 1}`}>
                 <div className="life-card-photo">
-                  <img src={`/images/${item.img}`} alt={item.alt} />
+                  <img src={bp(`/images/${item.img}`)} alt={item.alt} />
                   <div className="life-card-photo-overlay"></div>
                 </div>
                 <div className="life-icon-box">{item.icon}</div>
@@ -410,6 +412,7 @@ export default function Home() {
 
       {/* ═══ VERSE ═══ */}
       <section id="verse">
+        <div className="verse-bg" style={{backgroundImage: `url('${bp('/images/hero-prayer.jpg')}')`}}></div>
         <div className="verse-wrap reveal">
           <span className="verse-mark">&ldquo;</span>
           <p className="verse-text">

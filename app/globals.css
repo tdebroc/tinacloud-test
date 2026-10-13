@@ -194,7 +194,6 @@ nav.scrolled {
 .hero-photo {
   position: absolute;
   inset: 0;
-  background-image: url('/images/hero-church.jpg');
   background-size: cover;
   background-position: center 40%;
   opacity: 0.28;
@@ -997,11 +996,10 @@ section { padding: 7rem 2rem; }
   position: relative;
   overflow: hidden;
 }
-#verse::before {
-  content: '';
+
+.verse-bg {
   position: absolute;
   inset: 0;
-  background-image: url('/images/hero-prayer.jpg');
   background-size: cover;
   background-position: center 30%;
   opacity: 0.18;
