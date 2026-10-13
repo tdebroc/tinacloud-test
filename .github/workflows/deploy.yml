@@ -34,10 +34,12 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build:ci
+        run: npm run build
         env:
           NEXT_PUBLIC_BASE_PATH: /tinacloud-test
           NODE_ENV: production
+          NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_TINA_CLIENT_ID }}
+          TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
