@@ -1,26 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 const bp = (path) => `${process.env.NEXT_PUBLIC_BASE_PATH || ''}${path}`
 
 export default function Home() {
-  const [mobileOpen, setMobileOpen] = useState(false)
-
-  const toggleMobile = () => setMobileOpen(v => !v)
-  const closeMobile = () => setMobileOpen(false)
-
   useEffect(() => {
-    const nav = document.getElementById('nav')
-    const bar = document.getElementById('readingProgress')
-
-    const onScroll = () => {
-      nav.classList.toggle('scrolled', window.scrollY > 60)
-      const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
-      bar.style.width = pct + '%'
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-
     const revealObserver = new IntersectionObserver(
       entries => {
         entries.forEach(e => {
@@ -52,49 +39,12 @@ export default function Home() {
       }
     }
 
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      revealObserver.disconnect()
-    }
+    return () => revealObserver.disconnect()
   }, [])
-
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : ''
-  }, [mobileOpen])
 
   return (
     <>
-      <div className="reading-progress" id="readingProgress"></div>
-
-      <div className={`nav-mobile-overlay${mobileOpen ? ' open' : ''}`} id="mobileOverlay">
-        <a href="#about" onClick={closeMobile}>La Paroisse</a>
-        <a href="#events" onClick={closeMobile}>Agenda</a>
-        <a href="#parish-life" onClick={closeMobile}>Vie Paroissiale</a>
-        <a href="#sacraments" onClick={closeMobile}>Sacrements</a>
-        <a href="#contact" onClick={closeMobile}>Contact</a>
-        <a href="#mass-times" onClick={closeMobile} style={{ color: 'var(--gold)' }}>Horaires des Messes</a>
-      </div>
-
-      <nav id="nav">
-        <a href="#" className="nav-logo">
-          <img src={bp('/Logo+SGJBG-1920w.webp')} alt="Saint-Jean-Baptiste de Grenelle" />
-          <div className="nav-logo-text">
-            <span className="name">SJBG</span>
-            <span className="loc">Paris XV<sup>e</sup></span>
-          </div>
-        </a>
-        <ul className="nav-links">
-          <li><a href="#about">La Paroisse</a></li>
-          <li><a href="#events">Agenda</a></li>
-          <li><a href="#parish-life">Vie Paroissiale</a></li>
-          <li><a href="#sacraments">Sacrements</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#mass-times" className="nav-cta">Horaires</a></li>
-        </ul>
-        <div className="nav-hamburger" id="hamburger" onClick={toggleMobile}>
-          <span></span><span></span><span></span>
-        </div>
-      </nav>
+      <Header />
 
       {/* ═══ HERO ═══ */}
       <section id="hero">
@@ -492,57 +442,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ FOOTER ═══ */}
-      <footer>
-        <div className="footer-wrap">
-          <div className="footer-top">
-            <div>
-              <div className="footer-logo-name">Saint-Jean-Baptiste de Grenelle</div>
-              <div className="footer-logo-sub">Paroisse catholique, Paris XV<sup>e</sup></div>
-              <p className="footer-blurb">
-                Une communauté vivante, enracinée dans la foi, ouverte à tous. Venez prier, vous former
-                et servir avec nous au cœur du 15<sup>e</sup> arrondissement de Paris.
-              </p>
-            </div>
-            <div>
-              <div className="footer-col-head">La Paroisse</div>
-              <ul className="footer-list">
-                <li><a href="https://www.sjbg.org">Présentation</a></li>
-                <li><a href="https://www.sjbg.org">Équipe pastorale</a></li>
-                <li><a href="https://www.sjbg.org">Histoire</a></li>
-                <li><a href="https://www.sjbg.org">La Chapelle</a></li>
-              </ul>
-            </div>
-            <div>
-              <div className="footer-col-head">Vie Spirituelle</div>
-              <ul className="footer-list">
-                <li><a href="https://www.sjbg.org">Horaires des messes</a></li>
-                <li><a href="https://www.sjbg.org">Sacrements</a></li>
-                <li><a href="https://www.sjbg.org">Parcours Alpha</a></li>
-                <li><a href="https://www.sjbg.org">Parcours Zachée</a></li>
-                <li><a href="https://www.sjbg.org">Adoration</a></li>
-              </ul>
-            </div>
-            <div>
-              <div className="footer-col-head">Engagement</div>
-              <ul className="footer-list">
-                <li><a href="https://www.sjbg.org">Le Vestiaire</a></li>
-                <li><a href="https://www.sjbg.org">Maraudes Antigel</a></li>
-                <li><a href="https://www.sjbg.org">Saint-Vincent de Paul</a></li>
-                <li><a href="https://www.sjbg.org">Bénévolat</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <span>© 2026 Paroisse Saint-Jean-Baptiste de Grenelle · Paris XV<sup>e</sup></span>
-            <div className="footer-bottom-links">
-              <a href="https://www.sjbg.org">sjbg.org</a>
-              <a href="https://www.sjbg.org">Mentions légales</a>
-              <a href="mailto:accueil@sjbg.org">Contact</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   )
 }
