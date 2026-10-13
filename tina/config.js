@@ -40,7 +40,6 @@ export default defineConfig({
         format: 'json',
         ui: {
           allowedActions: { create: false, delete: false },
-          global: true,
         },
         match: { include: 'navigation' },
         fields: [
