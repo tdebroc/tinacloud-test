@@ -1,0 +1,19 @@
+{
+  "name": "tinacloud-test",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"next dev\"",
+    "build": "tinacms build && next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^14.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "tinacms": "^3.14.4"
+  },
+  "devDependencies": {
+    "@tinacms/cli": "^4.0.2"
+  }
+}
