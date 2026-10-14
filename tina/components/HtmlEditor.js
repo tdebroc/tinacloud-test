@@ -1,9 +1,10 @@
+import React, { useRef, useEffect } from 'react'
 import { useEditor, EditorContent } from '@tiptap/react'
 import { StarterKit } from '@tiptap/starter-kit'
 import { Link } from '@tiptap/extension-link'
 import { Underline } from '@tiptap/extension-underline'
 import { TextAlign } from '@tiptap/extension-text-align'
-import { useRef, useEffect } from 'react'
+
 
 const btn = (active) => ({
   padding: '4px 9px',
