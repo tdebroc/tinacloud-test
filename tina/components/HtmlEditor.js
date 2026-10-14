@@ -1,10 +1,8 @@
 import { useEditor, EditorContent } from '@tiptap/react'
-import StarterKit from '@tiptap/starter-kit'
-import Link from '@tiptap/extension-link'
-import Underline from '@tiptap/extension-underline'
-import TextAlign from '@tiptap/extension-text-align'
-import TextStyle from '@tiptap/extension-text-style'
-import Color from '@tiptap/extension-color'
+import { StarterKit } from '@tiptap/starter-kit'
+import { Link } from '@tiptap/extension-link'
+import { Underline } from '@tiptap/extension-underline'
+import { TextAlign } from '@tiptap/extension-text-align'
 import { useRef, useEffect } from 'react'
 
 const btn = (active) => ({
@@ -34,8 +32,6 @@ export default function HtmlEditor({ input }) {
       Link.configure({ openOnClick: false }),
       Underline,
       TextAlign.configure({ types: ['heading', 'paragraph'] }),
-      TextStyle,
-      Color,
     ],
     content: input.value || '',
     onUpdate: ({ editor }) => {
