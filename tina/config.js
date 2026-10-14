@@ -1,4 +1,5 @@
 import { defineConfig } from 'tinacms';
+import HtmlEditor from './components/HtmlEditor.js';
 
 // Your hosting provider likely exposes this as an environment variable
 const branch =
@@ -85,10 +86,13 @@ export default defineConfig({
             required: true,
           },
           {
-            type: 'rich-text',
+            type: 'string',
             name: 'body',
-            label: 'Body',
+            label: 'Contenu',
             isBody: true,
+            ui: {
+              component: HtmlEditor,
+            },
           },
         ],
         ui: {
